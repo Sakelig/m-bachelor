@@ -1,5 +1,14 @@
-# DB stuff
-https://node-postgres.com/apis/client
+# READ THIS FIRST!!
+
+To run:
+`npm install` => `npm run dev`
+
+To dockerize:
+Note: install Docker https://docs.docker.com/get-docker/ then => 
+To build container:`docker build -t nextjs-docker .` => To run container: `docker run -p 3000:3000 nextjs-docker`
+
+docs for next with docker: https://nextjs.org/docs/pages/building-your-application/deploying
+docs for db: https://node-postgres.com/apis/client
 
 # With Docker
 
