@@ -12,7 +12,14 @@ export default async function handler(req, res) {
     if (req.method === "POST") {
         let user = null
         try {
-            user = await dbClient.query('SELECT * FROM users;')
+            user = await dbClient.query(`
+            SELECT *
+            FROM users;
+        `);
+
+
+            console.log("test")
+            console.log(user)
         } catch (err) {
             console.error(err)
         }
@@ -20,7 +27,6 @@ export default async function handler(req, res) {
         if (user === null)
             return res.status(422).json({ message: "Wrong email or password!" });
 
-        console.log(user)
         // const token = jwt.sign({ userId: user._id }, process.env.TOKEN_SECRET, {
         //     expiresIn: "1d",
         // });
