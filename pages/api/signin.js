@@ -2,26 +2,32 @@ import dbConnect from "../../lib/dbConnect";
 // import User from "../../models/user";
 import jwt from "jsonwebtoken";
 import cookie from "cookie";
-import { setCookies } from "cookies-next";
+import { setCookie } from "cookies-next";
 
 export default async function handler(req, res) {
-    await dbConnect();
+    const dbClient = await dbConnect();
 
     const { email, password } = req.body;
 
     if (req.method === "POST") {
-        // const user = await User.findOne({ email, password });
-        //
-        // if (!user)
-        //     return res.status(422).json({ message: "Wrong email or password!" });
-        //
+        let user = null
+        try {
+            user = await dbClient.query('SELECT * FROM users;')
+        } catch (err) {
+            console.error(err)
+        }
+
+        if (user === null)
+            return res.status(422).json({ message: "Wrong email or password!" });
+
+        console.log(user)
         // const token = jwt.sign({ userId: user._id }, process.env.TOKEN_SECRET, {
         //     expiresIn: "1d",
         // });
 
         const token = {"wow": 123}
 
-        setCookies("token", token, {
+        setCookie("token", token, {
             req,
             res,
             maxAge: 60 * 60 * 24, // 1 day

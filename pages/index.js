@@ -1,22 +1,21 @@
-import { removeCookies } from "cookies-next"
+import { deleteCookie } from "cookies-next"
 import Layout from "../components/Layout"
 // import getUser from "../lib/getUser"
 import { useRouter } from "next/router"
-// import dbConnect from "../lib/dbConnect"
-// import { useUser } from "../UserContext"
+import { useUser } from "../UserContext"
 
 export default function Home() {
   const router = useRouter()
-  // const user = useUser()
+  const user = useUser()
 
   // console.log(user)
 
   const signoutHandler = () => {
-    removeCookies("token")
+    deleteCookie("token")
     router.push("/signin")
   }
 
-  return (
+    return (
       <Layout>
         <h1>Home Page</h1>
         <p>

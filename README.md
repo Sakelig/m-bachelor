@@ -1,14 +1,29 @@
 # READ THIS FIRST!!
+---- START ----
 
-To run:
+To run locally:
 `npm install` => `npm run dev`
 
-To dockerize:
-Note: install Docker https://docs.docker.com/get-docker/ then => 
-To build container:`docker build -t nextjs-docker .` => To run container: `docker run -p 3000:3000 nextjs-docker`
+To run dockerized:
+Note: install Docker https://docs.docker.com/get-docker/ then =>
+Turn on: `docker compose up` on the same folder where `docker-compose-yml` is located
+Turn off: `docker compose down` on the same folder where `docker-compose-yml` is located 
+
+To dockerize individually:
+Note: install Docker https://docs.docker.com/get-docker/ then =>
+
+For frontend:
+To build image: `docker build -t nextjs-docker .` => To run container: `docker run -p 3000:3000 nextjs-docker`
+if you only want a frontend up and running u can do `docker compose up frontend`
+
+For db:
+To build image: `docker build -t db .` => To run container: `docker run -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=db_name -p 5431:1337 db` => NOTE: this will not run the sql scripts
+if you only want a db up and running u can do `docker compose up db`
 
 docs for next with docker: https://nextjs.org/docs/pages/building-your-application/deploying
 docs for db: https://node-postgres.com/apis/client
+
+---- END ----
 
 # With Docker
 

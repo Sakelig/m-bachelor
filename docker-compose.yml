@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  db:
+    build: ./db
+    container_name: postgres
+    ports:
+      - "5431:1337"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db_name
+#    volumes:
+#      - ./data:/data
+#    Uncomment above and make a /data folder if you want to persist data incase db dies or u kill it but want to keep data
+
+  frontend:
+    build: .
+    container_name: frontend
+    ports:
+      - "3000:3000"
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#      - POSTGRES_DB=db_name
+#

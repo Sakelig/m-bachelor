@@ -2,7 +2,7 @@ import dbConnect from "../../lib/dbConnect";
 // import User from "../../models/user";
 import jwt from "jsonwebtoken";
 import cookie from "cookie";
-import { setCookies } from "cookies-next";
+import { setCookie } from "cookies-next";
 
 export default async function handler(req, res) {
     // await dbConnect();
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 
         const token = {"wow": 123}
 
-        setCookies("token", token, {
+        setCookie("token", token, {
             req,
             res,
             maxAge: 60 * 60 * 24, // 1 day
