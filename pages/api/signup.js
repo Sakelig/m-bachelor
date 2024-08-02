@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         let hashedPassword = await hashPassword(password)
 
         // adds user to db
-        const createdUser = await dbClient.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING users.id', [name, email, hashedPassword])
+        const createdUser = await dbClient.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *', [name, email, hashedPassword])
         const newUsersId = createdUser.rows[0].id
         const token = jwt.sign({ userId: newUsersId }, process.env.TOKEN_SECRET, {
             expiresIn: "1d",
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
             path: "/",
         });
         dbClient.end()
-        res.status(201).json(token)
+        res.status(201).json(createdUser)
     } else {
         dbClient.end()
         res.status(424).json({ message: "Invalid method!" });

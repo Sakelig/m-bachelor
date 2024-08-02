@@ -9,7 +9,7 @@ export default function Home(props) {
   const router = useRouter()
   const user = useUser()
 
-  console.log(user)
+  console.log(user, props)
 
   const signoutHandler = () => {
     deleteCookie("token")
@@ -30,6 +30,10 @@ export default function Home(props) {
         <p>
           <strong>Email</strong>: {user.email}
         </p>
+
+      <p>
+          <strong>password</strong>: {user.password}
+      </p>
 
         <button onClick={signoutHandler}>Sign out</button>
       </Layout>

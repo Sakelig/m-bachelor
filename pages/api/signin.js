@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     if (req.method === "POST") {
 
-        let user = await dbClient.query('SELECT id, password FROM users WHERE email=$1', [email])
+        let user = await dbClient.query('SELECT * FROM users WHERE email=$1', [email])
         console.log(user)
 
 
@@ -20,7 +20,6 @@ export default async function handler(req, res) {
 
         const usersHashedPassword = user.rows[0].password
         const correctPassword = await compareHashAndPassword(password, usersHashedPassword)
-        console.log(correctPassword)
 
         if (!correctPassword){
             return res.status(422).json({ message: "Wrong email or password!" });
@@ -39,7 +38,7 @@ export default async function handler(req, res) {
         });
 
         dbClient.end()
-        res.status(200).json(token)
+        res.status(200).json(user.rows[0])
     } else {
         dbClient.end()
         res.status(424).json({ message: "Invalid method!" });
