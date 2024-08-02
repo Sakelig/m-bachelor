@@ -7,9 +7,10 @@ import dbConnect from "../lib/dbConnect";
 
 export default function Home(props) {
   const router = useRouter()
-  const user = useUser()
-
-  console.log(user, props)
+  let user = useUser()
+    if (user === undefined || props.user){
+        user = props.user
+    }
 
   const signoutHandler = () => {
     deleteCookie("token")
