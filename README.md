@@ -1,8 +1,14 @@
 # READ THIS FIRST!!
 ---- START ----
 
+Make a `.env` file similiar to `.env.exampel` NOTE! POSTGRES_HOST has to be local when running the frontend locally
+
 To run locally:
 `npm install` => `npm run dev`
+`docker compose up db`
+
+To run fully dockerized:
+`docker compose up`
 
 To run dockerized:
 Note: install Docker https://docs.docker.com/get-docker/ then =>
