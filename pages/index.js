@@ -1,14 +1,15 @@
 import { deleteCookie } from "cookies-next"
 import Layout from "../components/Layout"
-// import getUser from "../lib/getUser"
 import { useRouter } from "next/router"
 import { useUser } from "../UserContext"
+import getUser from "../lib/getUser";
+import dbConnect from "../lib/dbConnect";
 
-export default function Home() {
+export default function Home(props) {
   const router = useRouter()
   const user = useUser()
 
-  // console.log(user)
+  console.log(user)
 
   const signoutHandler = () => {
     deleteCookie("token")
@@ -23,14 +24,34 @@ export default function Home() {
           access this page.
         </p>
 
-        {/*<p>*/}
-        {/*  <strong>Name</strong>: {user.name}*/}
-        {/*</p>*/}
-        {/*<p>*/}
-        {/*  <strong>Email</strong>: {user.email}*/}
-        {/*</p>*/}
+        <p>
+          <strong>Name</strong>: {user.name}
+        </p>
+        <p>
+          <strong>Email</strong>: {user.email}
+        </p>
 
         <button onClick={signoutHandler}>Sign out</button>
       </Layout>
   )
+}
+export async function getServerSideProps({ req, res }) {
+    await dbConnect()
+
+    const user = await getUser(req, res)
+
+    if (!user) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/signin"
+            },
+            props: {}
+        }
+    }
+    return {
+        props: {
+            user
+        }
+    }
 }

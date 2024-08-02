@@ -4,17 +4,29 @@ export default function Layout({ children }) {
     return (
         <>
             <nav>
-                <Link href="/">
-                    Home Page
-                </Link>
+                <div>
+                    <Link href="/">
+                        Home Page
+                    </Link>
+                </div>
 
-                <Link href="/signup">
-                    SignUp
-                </Link>
+                <div>
+                    <Link href="/playground">
+                        Playground Page
+                    </Link>
+                </div>
 
-                <Link href="/signin">
-                    SignIn
-                </Link>
+                <div>
+                    <Link href="/signup">
+                        SignUp
+                    </Link>
+                </div>
+
+                <div>
+                    <Link href="/signin">
+                        SignIn
+                    </Link>
+                </div>
             </nav>
 
             <section>{children}</section>

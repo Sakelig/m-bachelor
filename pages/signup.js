@@ -3,7 +3,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import getUser from "../lib/getUser";
-import dbConnect from "../lib/dbConnect";
 
 export default function SignupPage() {
     const [name, setName] = useState("");
@@ -59,7 +58,6 @@ export default function SignupPage() {
 }
 
 export async function getServerSideProps({ req, res }) {
-    await dbConnect();
 
     const user = await getUser(req, res);
     if (user) {
