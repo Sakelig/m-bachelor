@@ -1,7 +1,5 @@
 import dbConnect from "../../lib/dbConnect";
-// import User from "../../models/user";
 import jwt from "jsonwebtoken";
-import cookie from "cookie";
 import { setCookie } from "cookies-next";
 import {compareHashAndPassword} from "../../lib/utils";
 

@@ -1,6 +1,3 @@
-import {useRouter} from "next/router";
-import {useUser} from "../UserContext";
-import {deleteCookie} from "cookies-next";
 import Layout from "../components/Layout";
 import dbConnect from "../lib/dbConnect";
 import getUser from "../lib/getUser";

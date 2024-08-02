@@ -19,8 +19,9 @@ services:
     container_name: frontend
     ports:
       - "3000:3000"
-#    environment:
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_PASSWORD=postgres
-#      - POSTGRES_DB=db_name
+    environment:
+      - TOKEN_SECRET=changethissecret
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db_name
 #
