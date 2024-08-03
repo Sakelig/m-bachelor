@@ -1,7 +1,9 @@
 # READ THIS FIRST!!
 ---- START ----
 
-Make a `.env` file similiar to `.env.exampel` NOTE! POSTGRES_HOST has to be local when running the frontend locally
+Make a `.env` file similiar to `.env.exampel` NOTE! POSTGRES_HOST has to be localhost when running the frontend locally
+
+Note: install Docker https://docs.docker.com/get-docker/
 
 To run locally:
 `npm install` => `npm run dev`
@@ -27,7 +29,9 @@ To build image: `docker build -t db .` => To run container: `docker run -e POSTG
 if you only want a db up and running u can do `docker compose up db`
 
 docs for next with docker: https://nextjs.org/docs/pages/building-your-application/deploying
-docs for db: https://node-postgres.com/apis/client
+docs for db: https://node-postgres.com/apis/pool
+
+NOTE: Its recommanded to delete both the image and container manually on docker when doing docker compose down, tho its not always needed but it garantee that it will be a new image you create and not use the same old one
 
 ---- END ----
 
