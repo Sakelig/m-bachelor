@@ -31,7 +31,11 @@ if you only want a db up and running u can do `docker compose up db`
 docs for next with docker: https://nextjs.org/docs/pages/building-your-application/deploying
 docs for db: https://node-postgres.com/apis/pool
 
-NOTE: Its recommanded to delete both the image and container manually on docker when doing docker compose down, tho its not always needed but it garantee that it will be a new image you create and not use the same old one
+Two dummy users:
+Email:user@user.com - Password:123
+Email:test@test.com - Password:test
+
+NOTE: Its recommended to delete both the image and container manually on docker when doing docker compose down, tho its not always needed but it garantee that it will be a new image you create and not use the same old one
 
 ---- END ----
 
